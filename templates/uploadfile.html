@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<style>
+    .Form-container{
+        padding-top: 70px;
+        padding-bottom: 280px;
+        font-family: sans-serif;
+    }
+</style>
+{% extends 'masterpage.html'%}
+{% block content %}
+<div class="Form-container">
+    <center><h1> BPMN To User Stories </h1></center>
+    <center><p>Convert yout BPMN to User Stories with amazing tools !!</p></center>
+    <form method="POST" enctype="multipart/form-data" action="/proses/">
+    {% csrf_token %}
+        <center><input type="file" name="xml"></center>
+        <center><input type="submit"> </input></center>
+    </form>
+</div>
+{% endblock %}
+</html>
