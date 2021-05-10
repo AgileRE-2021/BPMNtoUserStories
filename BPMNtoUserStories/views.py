@@ -5,6 +5,9 @@ import xml.etree.ElementTree as ET
 
 def masterpages(request):
      return render(request,'masterpage.html')
+
+def home(request):
+     return render(request,'home.html')
      
 def uploadpage(request):
      return render(request,'uploadfile.html')
