@@ -39,7 +39,7 @@ def parsing(request):
                 list_actor.append(name)
             for i in tree.findall('.//Activity'):
                 activity = i.get('Name')
-                if (activity != "Start" and activity != "End" and activity != " "):
+                if (activity != "Start" and activity != "End" and activity != None):
                     list_activity.append(activity)
             total_actor = len(list_actor)
             
@@ -53,7 +53,6 @@ def parsing(request):
                         Y_Coordinates = sub_child.get('YCoordinate')
                         Y_Coordinates_cnvrt = int(Y_Coordinates)
                         Lane_Coordinates.append(Y_Coordinates_cnvrt)
-
                 uniques=[]
                 dups=[]
 
@@ -63,13 +62,20 @@ def parsing(request):
                         ordinate_y = sub_ordinate.get('YCoordinate')
                         ordinate_y_cnvrt = int(ordinate_y)
                         Y_ordinate.append(ordinate_y_cnvrt)
+                
+                last_actor=[]
+                actor_before_last=[]
+                for j in range (0,len(Lane_Coordinates)):
+                    for i in range (0,len(Y_ordinate)):
+                        # if (Y_ordinate[i] > Lane_Coordinates[j] and Y_ordinate[i] < Lane_Coordinates[j+1]):
+                        #     actor_before_last.append(Y_ordinate[i])
+                        if (Y_ordinate[i] > Lane_Coordinates[len(Lane_Coordinates)-1]):
+                            last_actor.append(Y_ordinate[i])
 
-               
-                for i in range (0,len(Y_ordinate)):
-                    for j in range (0,len(Lane_Coordinates)):
-                        
-                        if (Y_ordinate[i] < Lane_Coordinates[j]):
-                            print (Y_ordinate[i])
+                print("===LAST ACTOR ACTIVITY===")
+                print(last_actor)
+                # print("===ACTOR BEFORE LAST===")
+                # print(actor_before_last)
 
                 # for each in Coordinates:
                 #     if each not in uniques:
@@ -90,5 +96,5 @@ def parsing(request):
             else : 
                 print("less than 2")
 
-        context = {'list_actor':list_actor, 'list_activity':list_activity}
-    return render(request,'userstoriesresult.html',{'context': context, 'total_actor' : total_actor})
+        context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor}
+    return render(request,'userstoriesresult.html',context)

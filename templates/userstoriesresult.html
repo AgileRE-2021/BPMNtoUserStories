@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <style>
+    .user-stories-result{
+        padding-top: 15px;
+        padding-bottom: 20px;
+        font-family: sans-serif;
+    }
     .Result-container{
         padding-top: 15px;
         padding-bottom: 70px;
@@ -8,8 +13,19 @@
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
+    <div class="user-stories-result">
+        {% if total_actor == 1 %}
+        <!-- <h5>USER STORIES RESULT</h5> -->
+            {% for list_item in list_activity %}
+                {% for list_act in list_actor %}
+                    <p>i as a {{ list_act }} can "{{ list_item }}"</p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="Result-container">
-            <center><h5> LIST OF ACTOR </h5></center>
+        <center><h5> DETAIL </h5></center>
+        <center><h5> LIST OF ACTOR </h5></center>
         {% for list_act in list_actor %}
             <center>{{ list_act }}</center>
         {% endfor %}
