@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <style>
     .user-stories-result{
+        margin-top: 25px;
         padding-top: 15px;
-        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-bottom: 25px;
+        padding-right:20px;
+        box-shadow: 0 0.7rem 0.97rem 0 rgb(129 129 130 / 43%);
+        border-radius: 30px;
+        text-align:center;
         font-family: sans-serif;
     }
     .Result-container{
+        margin-top:70px;
         padding-top: 15px;
-        padding-bottom: 70px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        padding-right:20px;
+        box-shadow: 0 0.7rem 0.97rem 0 rgb(129 129 130 / 43%);
+        border-radius: 30px;
+        text-align:center;
         font-family: sans-serif;
+    }
+    .all-page{
+        margin-top: 30px !important;
+        padding-bottom: 140px;
+        width: 75%;
+        margin: auto
+    }
+    button {
+        background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
+        border:none;
+        border-radius: 20px;
+        font-family: sans-serif;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
+        /* background-color: rgb(170, 167, 167); */
     }
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
+<div class="all-page">
+<h1 style="font-family: sans-serif;color:#162c4e">Generation Result</h1>
+<span style="font-family: sans-serif">This result is generated automatically by system</span>
+
     <div class="user-stories-result">
+        <h3> User Stories </h3>
         {% if total_actor == 1 %}
         <!-- <h5>USER STORIES RESULT</h5> -->
             {% for list_item in list_activity %}
@@ -22,9 +62,10 @@
                 {% endfor %}
             {% endfor %}
         {% endif %}
+        <center><button onclick="showDiv()" >Show detail of components</button></center>
     </div>
-    <div class="Result-container">
-        <center><h5> DETAIL </h5></center>
+    <div id="Detail" class="Result-container" style="display:none" >
+        <h3> Detail of Components </h3>
         <center><h5> LIST OF ACTOR </h5></center>
         {% for list_act in list_actor %}
             <center>{{ list_act }}</center>
@@ -33,7 +74,18 @@
         {% for list_item in list_activity %}
             <center><p> act : </p></center>
             <center>{{ list_item }}</center>
-        {% endfor %}
+        {% endfor %} 
+    </div>
 </div>
+<script>
+    function showDiv() {
+      var x = document.getElementById("Detail");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
 {% endblock %}
 </html>

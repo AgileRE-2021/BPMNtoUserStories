@@ -1,21 +1,150 @@
 <!DOCTYPE html>
 <style>
-    .Form-container{
+    .content-container{
         padding-top: 70px;
-        padding-bottom: 280px;
+        padding-bottom: 200px;
         font-family: sans-serif;
     }
+    .upload-container{
+        margin: auto;
+        width:75%;
+        background-color: white;
+        padding-top: 50px;
+        padding-bottom: 90px;
+        box-shadow: 0.4rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+    }
+    html{
+        scroll-behavior: smooth;
+        font-family: sans-serif;
+    }
+    button {
+        background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
+        border:none;
+        border-radius: 20px;
+        font-family: sans-serif;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
+        /* background-color: rgb(170, 167, 167); */
+    }
+    .container-bg{
+        background-image: url(/static/image/background.png); 
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+    section{
+        min-height: 100vh;
+        width: 100%;
+    }
+    #sec-1{
+        position: relative;
+    }
+    .scroll-down{
+        height: 50px;
+        width: 30px;
+        border:2.5px solid black;
+        border-radius: 50px;
+        bottom: 100px;
+        position: absolute;
+        left: 50%;
+        cursor: pointer;
+    }
+    .scroll-container{
+        padding-top:70px;
+        padding-bottom: 20px;
+        position: absolute;
+        left: 48%;
+    }
+    .scroll-down::before,
+    .scroll-down::after{
+        content:'';
+        position :absolute;
+        top: 20%;
+        left: 50%;
+        border: 2px solid black;
+        height: 10px;
+        width: 10px;
+        transform: translate(-50%,-50%) rotate(45deg);
+        border-top: transparent;
+        border-left: transparent;
+        animation: scroll-down 1s ease-in-out infinite;
+    }
+    .scroll-down::after{
+        top: 30%;
+    }
+    @keyframes scroll-down{
+        0%{
+            opacity: 0;
+        }
+        30%{
+            opacity: 1;
+        }
+        60%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+            top: 90%;
+        }
+    }
+    .requirement-container{
+        margin: auto;
+        width:75%;
+        background-color: white;
+        padding-top: 30px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 90px;
+        box-shadow: 0.4rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+    }
+    h4{
+        margin-top: 4%;
+    }
+    
+    
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
-<div class="Form-container">
-    <center><h1> BPMN To User Stories </h1></center>
-    <center><p>Convert your BPMN 2.0 XML to User Stories with amazing tools !!</p></center>
-    <form method="POST" enctype="multipart/form-data" action="/proses/">
-    {% csrf_token %}
-        <center><input type="file" name="xml"></center>
-        <center><input type="submit"> </input></center>
-    </form>
-</div>
+{% load static %}
+<section id="sec-1">
+    <div class="container-bg">
+        <div class="content-container">
+            <div class="upload-container">
+                <center><h1> BPMN To User Stories </h1></center>
+                <center><p>Convert your BPMN 2.0 XML to User Stories with amazing tools !!</p></center>
+                <form method="POST" enctype="multipart/form-data" action="/proses/">
+                {% csrf_token %}
+                    <center><input type="file" name="xml"></center>
+                    <center><button type="submit"> Submit </button></center>
+                </form>
+            </div>
+            <a href="#sec-2">
+            <div class="scroll-container">
+                <center><b>How To Use ?</b></center>
+            </div>
+            <div class="scroll-down"> 
+            </div>           
+            
+            </a>
+        </div>
+    </div>
+</section>
+<section id="sec-2">
+    <div class="requirement-container">
+        <center><h2>How To Use ?</h2></center>
+        <h4> Tools Recommendation for BPMN Editor : </h4>
+        <center><img src="{% static 'image/Bizagi.jpg' %}" width="140px"></center>
+        <h4> Procedure : </h4>
+    </div>
+</section>
 {% endblock %}
 </html>
