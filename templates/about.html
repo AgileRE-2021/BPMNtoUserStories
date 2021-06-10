@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<style>
+    .top-container-bg{
+        padding-top:10px;
+        padding-bottom:10px;
+        background: url(/static/image/background-top-container.png); 
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+    .top-container{
+        width: 75%;
+        margin: auto
+    }
+    .middle-container{
+        padding-top:10px;
+        padding-bottom:10px;
+        width: 75%;
+        margin: auto
+    }
+    .about-container {
+        margin-top: 25px;
+        padding-top: 24px;
+        padding-left: 20px;
+        padding-bottom: 25px;
+        padding-right:20px;
+        box-shadow: 0.2rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+        text-align:center;
+        font-family: sans-serif;
+        background-color: white;
+    }
+    .membership-container {
+        margin-top: 25px;
+        padding-top: 24px;
+        padding-left: 20px;
+        padding-bottom: 25px;
+        padding-right:20px;
+        box-shadow: 0.2rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+        font-family: sans-serif;
+    }
+    .membership-top-line{
+        display:flex;
+    }
+    .membership-bottom-line{
+        margin-top: 7%;
+        display:flex;
+    }
+    .Result-container{
+        margin-top:70px;
+        padding-top: 15px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        padding-right:20px;
+        box-shadow: 0 0.7rem 0.97rem 0 rgb(129 129 130 / 43%);
+        border-radius: 30px;
+        text-align:center;
+        font-family: sans-serif;
+    }
+    .all-page{
+        margin-top: 30px !important;
+        padding-bottom: 140px;
+        display: block;
+        margin:auto;
+    }
+    .profile-container{
+       text-align: center;
+       margin-left: 7%;
+    }
+    button {
+        background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
+        border:none;
+        border-radius: 20px;
+        font-family: sans-serif;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
+        /* background-color: rgb(170, 167, 167); */
+    }
+</style>
+{% extends 'masterpage.html'%}
+{% block content %}
+{% load static %}
+<div class="all-page">
+    <div class="top-container-bg">
+        <div class="top-container">
+            <h1 style="font-family: sans-serif;color:#162c4e">BPMN To User Stories </h1>
+            <span style="font-family: sans-serif">Dibangun oleh mahasiswa Sistem Informasi</span>
+            <p style="font-family: sans-serif">Universitas Airlangga</p>
+            <div class="about-container">
+                <img src="{% static 'image/homelogo.jpg' %}" width="200px">
+                <p>Aplikasi BPMN to User Stories merupakan sebuah aplikasi berbasis web dimana</p>
+                <p>aplikasi ini dapat melakukan translasi dari BPMN ( filetype : .XML / .XPDL )</p>
+                <p>menjadi User Stories. User dapat mengupload file BPMN dengan tipe file yaitu .XML atau .XPDL, </p>
+                <p>kemudian user dapat melakukan generate dari file BPMN tadi menjadi User Stories dengan menekan tombol generate.</p> 
+                <p>Selain itu, aplikasi ini juga dapat memperlihatkan history setiap user melaukan generate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="middle-container">
+        <h1 style="font-family: sans-serif;color:#162c4e">Group 3</h1>
+        <span style="font-family: sans-serif">Anggota Kelompok 3 :</span>
+        <div class="membership-container">
+            <div class="membership-top-line">
+                <div class="profile-container">
+                    <b>Nesa Giarfina</b>
+                </div>
+                <div class="profile-container">
+                    <b>Tanvi Azmia Fathoni</b>
+                </div>
+                <div class="profile-container">
+                    <b>M. Dani Rahmatullah</b>
+                </div>
+                <div class="profile-container">
+                    <b>M. Roziq Syarwan E. </b> 
+                </div>
+            </div>
+            <div class="membership-bottom-line">
+                <div class="profile-container">
+                    <b>M. Reza Zulfikarsyah </b>
+                </div>
+                <div class="profile-container">
+                    <b>Hisyam Fariqi </b>
+                </div>
+                <div class="profile-container">
+                    <b>Kinara Al Ghiffari</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</html>

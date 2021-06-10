@@ -55,22 +55,32 @@
     <div class="user-stories-result">
         <h3> User Stories </h3>
         {% if total_actor == 1 %}
-        <!-- <h5>USER STORIES RESULT</h5> -->
             {% for list_item in list_activity %}
                 {% for list_act in list_actor %}
                     <p>i as a {{ list_act }} can "{{ list_item }}"</p>
                 {% endfor %}
             {% endfor %}
         {% endif %}
+        {% if total_actor > 1 %}
+            {% for mult in ACT %}
+            {% with mult|last as last %}
+                {% for Activity in mult %}
+                    {% if Activity != last %}
+                        <p>i as a {{ last }} can "{{ Activity }}"</p>
+                    {% endif %}
+                {% endfor %}  
+            {% endwith %}   
+            {% endfor %}
+        {% endif %}
         <center><button onclick="showDiv()" >Show detail of components</button></center>
     </div>
     <div id="Detail" class="Result-container" style="display:none" >
         <h3> Detail of Components </h3>
-        <center><h5> LIST OF ACTOR </h5></center>
+        <center><h5> Aspect of Who </h5></center>
         {% for list_act in list_actor %}
             <center>{{ list_act }}</center>
         {% endfor %}
-            <center><h5> LIST OF ACTIVITY </h5></center>
+            <center><h5> Aspect of What </h5></center>
         {% for list_item in list_activity %}
             <center><p> act : </p></center>
             <center>{{ list_item }}</center>

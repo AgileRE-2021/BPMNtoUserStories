@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<style>
+.whole-page{
+    margin-top: 30px !important;
+    padding-bottom: 240px;
+    display: block;
+    margin:auto;
+}
+.content-container{
+    width: 65%;
+    margin: auto;
+    margin-top: 25px;
+    padding-top: 24px;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    padding-right:20px;
+    box-shadow: 0.2rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+    border-radius: 30px;
+    text-align:center;
+    font-family: sans-serif;
+    background-color: white;
+    display: flex;
+}
+.image-section{
+    padding-left: 5px;
+} 
+</style>
+{% extends 'masterpage.html'%}
+{% block content %}
+{% load static %}
+<div class="whole-page">
+    <div class="content-container">
+        <div class="image-section">
+            <img src="{% static 'image/logo.jpg' %}" width="170px">
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="image-section">
+            <img src="{% static 'image/logo.jpg' %}" width="170px">
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="image-section">
+            <img src="{% static 'image/logo.jpg' %}" width="170px">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</html>
