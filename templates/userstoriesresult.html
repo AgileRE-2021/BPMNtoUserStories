@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <style>
+<<<<<<< HEAD
     .user-stories-result{
         margin-top: 25px;
         padding-top: 15px;
@@ -97,5 +98,26 @@
       }
     }
     </script>
+=======
+    .Result-container{
+        padding-top: 15px;
+        padding-bottom: 70px;
+        font-family: sans-serif;
+    }
+</style>
+{% extends 'masterpage.html'%}
+{% block content %}
+    <div class="Result-container">
+            <center><h5> LIST OF ACTOR </h5></center>
+        {% for list_act in list_actor %}
+            <center>{{ list_act }}</center>
+        {% endfor %}
+            <center><h5> LIST OF ACTIVITY </h5></center>
+        {% for list_item in list_activity %}
+            <center><p> act : </p></center>
+            <center>{{ list_item }}</center>
+        {% endfor %}
+</div>
+>>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
 {% endblock %}
 </html>
