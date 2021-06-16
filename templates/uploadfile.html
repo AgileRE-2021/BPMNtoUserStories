@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <style>
-<<<<<<< HEAD
     .content-container{
         padding-top: 70px;
         padding-bottom: 200px;
@@ -147,24 +146,5 @@
         <h4> Procedure : </h4>
     </div>
 </section>
-=======
-    .Form-container{
-        padding-top: 70px;
-        padding-bottom: 280px;
-        font-family: sans-serif;
-    }
-</style>
-{% extends 'masterpage.html'%}
-{% block content %}
-<div class="Form-container">
-    <center><h1> BPMN To User Stories </h1></center>
-    <center><p>Convert your BPMN 2.0 XML to User Stories with amazing tools !!</p></center>
-    <form method="POST" enctype="multipart/form-data" action="/proses/">
-    {% csrf_token %}
-        <center><input type="file" name="xml"></center>
-        <center><input type="submit"> </input></center>
-    </form>
-</div>
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
 {% endblock %}
 </html>

@@ -4,22 +4,15 @@ import xml.etree.ElementTree as ET
 import os
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
 def masterpages(request):
      return render(request,'masterpage.html')
 
 def home(request):
      return render(request,'home.html')
      
-<<<<<<< HEAD
 def about(request):
      return render(request,'about.html')
 
-=======
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
 def uploadpage(request):
      return render(request,'uploadfile.html')
 
@@ -33,11 +26,7 @@ def parsing(request):
         full_path = os.path.join(dir,file_name)
         file_output = "clean" +file_name
         full_path_new = os.path.join(dir,file_output)
-<<<<<<< HEAD
         with open(full_path, 'r') as infile, open(full_path_new, "w") as outfile: #MEMBERSIHKAN FORMAT XPDL AGAR TAG PADA XML TERDEFINISI
-=======
-        with open(full_path, 'r') as infile, open(full_path_new, "w") as outfile:
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
             data = infile.read()
             data = data.replace('xmlns="http://www.wfmc.org/2009/XPDL2.2"', '')
             outfile.write(data)
@@ -48,7 +37,6 @@ def parsing(request):
             root = tree.getroot()
             list_actor = []
             list_activity = []
-<<<<<<< HEAD
             for i in tree.findall('.//Lane'):       #PASSING UNTUK NILAI KOMPONEN USER STORIES
                 name = i.get('Name')
                 list_actor.append(name)
@@ -241,63 +229,3 @@ def history(request):
 # class PDFUserDetailView(PDFTemplateResponseMixin, DetailView):
 #     model = get_user_model()
 #     template_name = 'user_detail.html'
-=======
-            for i in tree.findall('.//Lane'):
-                name = i.get('Name')
-                list_actor.append(name)
-            for i in tree.findall('.//Activity'):
-                activity = i.get('Name')
-                if (activity != "Start" and activity != "End" and activity != " "):
-                    list_activity.append(activity)
-            total_actor = len(list_actor)
-            
-            
-
-            # mengecek apakah total aktor lebih dari satu dan mengambil nilai koordinat dari setiap lane didalam array
-            if (total_actor > 1): 
-                Lane_Coordinates = [] #koordinat sumbu y dari setiap swimlane
-                for act in tree.findall('.//Lanes'):
-                    for sub_child in act.findall('.//Coordinates'):
-                        Y_Coordinates = sub_child.get('YCoordinate')
-                        Y_Coordinates_cnvrt = int(Y_Coordinates)
-                        Lane_Coordinates.append(Y_Coordinates_cnvrt)
-
-                uniques=[]
-                dups=[]
-
-                Y_ordinate=[] #Y_Ordinate merupakan variable koordinate y dari setiap aktivitas/activity
-                for check in tree.findall('.//Activity'):
-                    for sub_ordinate in check.findall('.//Coordinates'):
-                        ordinate_y = sub_ordinate.get('YCoordinate')
-                        ordinate_y_cnvrt = int(ordinate_y)
-                        Y_ordinate.append(ordinate_y_cnvrt)
-
-               
-                for i in range (0,len(Y_ordinate)):
-                    for j in range (0,len(Lane_Coordinates)):
-                        
-                        if (Y_ordinate[i] < Lane_Coordinates[j]):
-                            print (Y_ordinate[i])
-
-                # for each in Coordinates:
-                #     if each not in uniques:
-                #         uniques.append(each)
-                #     else:
-                #         dups.append(each)
-                # print(dups)
-                # for i in range (0,len(Coordinates)):
-                #     for j in range (i+1,len(Coordinates)):
-                #         if (Coordinates[i] == Coordinates[j]):
-                #             final_coordinate.append(Coordinates[i])
-                
-                            
-                        # for check in sub_child:
-                        #     check = check.get('YCoordinate')
-                        #     if (Y_Coordinates == check):
-
-            else : 
-                print("less than 2")
-
-        context = {'list_actor':list_actor, 'list_activity':list_activity}
-    return render(request,'userstoriesresult.html',{'context': context, 'total_actor' : total_actor})
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af

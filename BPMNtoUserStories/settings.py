@@ -76,11 +76,7 @@ WSGI_APPLICATION = 'BPMNtoUserStories.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
         'NAME': 'bpmnus',
-=======
-        'NAME': 'bpmn2us',
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
         'USER': 'root',
         'PASSWORD':'',
         'HOST':'localhost',
