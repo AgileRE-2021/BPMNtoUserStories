@@ -8,8 +8,6 @@
 * [Petunjuk Penggunaan](#petunjuk-penggunaan)
 * [Informasi Lainnya](informasi-lainnya)
   * [Anggota Proyek](#anggota-proyek)
-  * [Tanggal Rilis](#tanggal-rilis)
-  * [Versi](#versi)
   * [Kontak](#kontak)
 
 <!-- TENTANG APLIKASI -->
@@ -28,14 +26,14 @@ Secara garis besar, aspek-aspek pembentuk dari User Stories sebagai output yang 
 3. Aspect of Why : Mewakili alasan untuk mencapai tujuan
 
 ### Sistem Pembangun
-Aplikasi BPMN2US dibangun dengan memanfaatkan *software*, *framework*, dan beberapa bahasa pemrograman, diantaranya adalah sebagai berikut :
-- [VsCode Editor]
-- [SQLite Database]
-- [GitHub]
-- [Django Framework]
-- [Bootstrap Framework]
-- [Python]
-- [Javascript]
+Aplikasi CDG dibangun dengan memanfaatkan *software*, *framework*, dan beberapa bahasa pemrograman, diantaranya adalah sebagai berikut :
+- [VsCode Editor](https://code.visualstudio.com/)
+- [SQLite Database](https://www.sqlite.org/index.html)
+- [GitHub](https://github.com/)
+- [Django Framework](https://www.djangoproject.com/) 
+- [Bootstrap Framework](https://getbootstrap.com/)
+- [Python](https://www.python.org/)
+- [Javascript](javascript.com)
 
 ## Petunjuk Instalasi 
 Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan pada sesi terminal, berikut prosedur yang dapat dilakukan :
@@ -103,19 +101,15 @@ Cara Kerja Cek History
 ## Informasi Lainnya
 ### Anggota Proyek
 Anggota pada proyek pengerjaan aplikasi *BPMNtoUserStories* terdiri dari 7 orang, meliputi :
+
 1. Nesa Giarfina         (081811633007)
 2. Tanvi Azmia Fathoni   (081811633013)
-3. M. Dani Rahmatullah   (081811633029)
+3. M. Dani Rahmatulloh   (081811633029)
 4. M. Roziq Syarwan E.   (081811633031)
 5. M. Reza Zulfikarsyah  (081811633033)
 6. Hisyam Fariqi         (081811633039)
 7. Kinara Al Ghiffari    (081811633049)
 
-### Tanggal Rilis 
-Tanggal 28 Juni 2021
-
-### Versi 
-Version 1.0 
 ### Kontak 
 Informasi kontak setiap anggota lebih detail dapat dilihat di bawah ini. 
 1. Nesa Giarfina         : nesagiarfina@gmail.com
