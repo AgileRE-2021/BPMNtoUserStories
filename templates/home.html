@@ -8,6 +8,15 @@
     left: 50%;
     transform: translate(-50%, -50%); */
 }
+
+.container-bg{
+        background-image: url(/static/image/home.png); 
+        background-repeat:no-repeat;
+        background-size:100%;
+        width: 1900px;
+        height: 900px;
+    }
+
 button {
   background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
   border:none;
@@ -27,16 +36,24 @@ button:hover {
 body {
     background-image: url('image/home.png');
 }
+.location{
+    padding-top:400px;
+    padding-left: 900px;
+    
+    
+}
 
 </style>
 
 <body >
-    <a href="/uploadfile">
-    <div class="image-container">
-        <center><img src="{% static 'image/home.png' %}" width="1920px"></center>
-    
+    <div  class="container-bg">
+        <div class="location">
+        <center><a href="/uploadfile"
+            <center><button type="submit"> Start BPMN2US </button></center>
+            </a></center>
+        </div>
+    </div>
+        
 </body>
-<footer>
-
-</footer>
+<footer></footer>
 </html>

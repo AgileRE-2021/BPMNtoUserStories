@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 import xml.etree.ElementTree as ET
 import os
+import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
 
 
 def masterpages(request):
@@ -17,6 +19,18 @@ def uploadpage(request):
      return render(request,'uploadfile.html')
 
 def parsing(request):
+    raw_percobaan = "Identify Corpus test"
+    raw_percobaan2 = "Detect car allocation"
+    raw_percobaan3 = "car is allocated"
+    print("TEST COBA NLTK")
+
+    #Tokenization
+    text = nltk.word_tokenize(raw_percobaan2)
+    print(text)
+
+    #PART OF SPEECH TAGGING
+    POS = nltk.pos_tag(text)
+    print(POS)
     if request.method == 'POST':
         uploaded_file = request.FILES['xml']
         fs = FileSystemStorage()
