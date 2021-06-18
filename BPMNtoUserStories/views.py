@@ -49,8 +49,11 @@ def parsing(request):
             
 
             Artifacts = []
+            TextAnnotation = []
             for i in tree.findall('.//Artifact'):
                 annotation = i.get('ArtifactType')
+                text = i.get('TextAnnotation')
+                TextAnnotation.append(text)
                 print(annotation)
                 if (annotation == "Annotation"):
                     Artifacts.append(annotation)
@@ -126,94 +129,101 @@ def parsing(request):
                                 id = elem.get('Id') #coba
                                 activity_multiple = elem.get('Name')
                                 # if (activity_multiple != "Start" and activity_multiple != "End" and "?" not in activity_multiple and activity_multiple):
-                                ACT[j].append(activity_multiple) #coba
+                                ACT[j].append(id) #coba
                                     # arr_Name.append(activity_multiple)
                                     # arr_Name.append(activity_multiple) #coba
                                     # ACT[j].append(activity_multiple)
                    
                     
                     #ASPECT OF WHY PROCESSING
-                    # if (len(Artifacts)>0):
-                    #     Arr_Pair = []  #Pasangan Activity dengan Association
-                    #     why = []
-                    #     for i in range (0,len(Artifacts)):
-                    #         why.append("X")
-                    #     for i in range (0,len(why)):
-                    #         why[i] = []
-                    #         Arr_Pair.append(why[i])
+                    if (len(Artifacts)>0):
+                        Arr_Pair = []  #Pasangan Activity dengan Association
+                        why = []
+                        for i in range (0,len(Artifacts)):
+                            why.append("X")
+                        for i in range (0,len(why)):
+                            why[i] = []
+                            Arr_Pair.append(why[i])
 
-                    #     source_array = []                           #inserted source to array
-                    #     for j in tree.findall('.//Association'):
-                    #         Source = j.get('Source')
-                    #         for elem in tree.findall('.//Activity[@Id="%s"]' %Source):
-                    #             id_act = elem.get('Id')
-                    #             source_array.append(id_act)
+                        source_array = []                           #inserted source to array
+                        for j in tree.findall('.//Association'):
+                            Source = j.get('Source')
+                            for elem in tree.findall('.//Activity[@Id="%s"]' %Source):
+                                id_act = elem.get('Id')
+                                source_array.append(id_act)
                         
-                    #     target_array = []                           #inserted source to array
-                    #     for j in tree.findall('.//Association'):
-                    #         Target = j.get('Target')
-                    #         for elem in tree.findall('.//Artifact[@Id="%s"]' %Target):
-                    #             Text_annotation = elem.get('TextAnnotation')
-                    #             target_array.append(Text_annotation)
+                        target_array = []                           #inserted source to array
+                        for j in tree.findall('.//Association'):
+                            Target = j.get('Target')
+                            for elem in tree.findall('.//Artifact[@Id="%s"]' %Target):
+                                Text_annotation = elem.get('TextAnnotation')
+                                target_array.append(Text_annotation)
                         
-                    #     for i in range (0,len(why)):
-                    #         why[i].append(source_array[i])
-                    #         why[i].append(target_array[i])
-                    #     print(why)          
+                        for i in range (0,len(why)):
+                            why[i].append(source_array[i])
+                            why[i].append(target_array[i])
+                        print(why)          
                         
 
-                    for i in range (0,len(ACT)):                #MENDELETE HANYA KOORDINAT Y SAJA
-                        for j in range (0,deleted_index[i]):
-                            ACT[i].pop(0)
-                    
-                    # for i in range (0,len(ACT)):                
-                    #     for j in range (0,len(ACT[i])):         
-                    #         appendix = ACT[i][j]
-                    #         ACT[i][j] = []
-                    #         ACT[i][j].append(appendix)
-                    #         ACT[i][j].append(list_actor[i])
-                    #         for elem in tree.findall('.//Activity[@Id="%s"]' %appendix):
-                    #             activities = elem.get('Name')
-                    #             ACT[i][j].append(activities)
-                    
-                    # for i in range (0,len(ACT)):                
-                    #     for j in range (0,len(ACT[i])):   
-                    #         for z in range (0,len(why)):
-                    #             if (ACT[i][j][0]==why[z][0]):
-                    #                 ACT[i][j].append(why[z][1])
-                    
-                    # for i in range (0,len(ACT)):
-                    #     for j in range (0,len(ACT[i])):                  #MENDELETE HANYA KOORDINAT Y SAJA
-                    #         for z in range (0,1):
-                    #             ACT[i][j].pop(0)
-
-                    # print("") #coba
-                    # print("") #coba
-                    # print("==HASIL ID BERDASARKAN KOORDINAT==") #coba
-                    # for i in range (0,len(ACT)):
-                    #     for j in range (0,len(ACT[i])): 
-                    #         if (len(ACT[i][j])==3):
-                    #             print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1] + ", so that " + why[z][1] )
-                    #         else :
-                    #             print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1])
-
+                        for i in range (0,len(ACT)):                #MENDELETE HANYA KOORDINAT Y SAJA
+                            for j in range (0,deleted_index[i]):
+                                ACT[i].pop(0)
+                        
+                        for i in range (0,len(ACT)):                
+                            for j in range (0,len(ACT[i])):         
+                                appendix = ACT[i][j]
+                                ACT[i][j] = []
+                                ACT[i][j].append(appendix)
+                                ACT[i][j].append(list_actor[i])
+                                for elem in tree.findall('.//Activity[@Id="%s"]' %appendix):
+                                    activities = elem.get('Name')
+                                    ACT[i][j].append(activities)
+                        
+                        for i in range (0,len(ACT)):                
+                            for j in range (0,len(ACT[i])):   
+                                for z in range (0,len(why)):
+                                    if (ACT[i][j][0]==why[z][0]):
+                                        ACT[i][j].append(why[z][1])
+                    else:
+                        for i in range (0,len(ACT)):                #MENDELETE HANYA KOORDINAT Y SAJA
+                            for j in range (0,deleted_index[i]):
+                                ACT[i].pop(0)
+                                
+                        for i in range (0,len(ACT)):                
+                            for j in range (0,len(ACT[i])):         
+                                appendix = ACT[i][j]
+                                ACT[i][j] = []
+                                ACT[i][j].append(appendix)
+                                ACT[i][j].append(list_actor[i])
+                                for elem in tree.findall('.//Activity[@Id="%s"]' %appendix):
+                                    activities = elem.get('Name')
+                                    ACT[i][j].append(activities)
+                                    
                     for i in range (0,len(ACT)):
-                        ACT[i].append(list_actor[i])
+                        for j in range (0,len(ACT[i])):                  #MENDELETE HANYA KOORDINAT Y SAJA
+                            for z in range (0,1):
+                                ACT[i][j].pop(0)
+
+                    print(ACT)
+                    print("") #coba
+                    print("") #coba
+                    print("==HASIL ID BERDASARKAN KOORDINAT==") #coba
+                    for i in range (0,len(ACT)):
+                        for j in range (0,len(ACT[i])): 
+                            if (len(ACT[i][j])==3):
+                                print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1] + ", so that " + why[z][1] )
+                            else :
+                                print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1])
+
                     
-                    # for i in range (0,len(ACT)):
-                    #     for z in range (0,len(why)):
-                    #         for j in range (0,len(ACT[i])-1):
-                    #             if (why[z][0]==ACT[i][j]):
-                    #                 print ("I as " + ACT[i][len(ACT[i])-1] + ", i can " + ACT[i][j] + ", so that " + why[z][1] )
-                    #             else :
-                    #                 print ("I as " + ACT[i][len(ACT[i])-1] + ", i can " + ACT[i][j] )
+                    
                             
 
-                context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor,'ACT':ACT}
+                context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor,'ACT':ACT, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)
             else : 
                 print("less than 2")
-                context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor}
+                context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)
 
 

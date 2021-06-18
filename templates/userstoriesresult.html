@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <style>
-<<<<<<< HEAD
     .user-stories-result{
         margin-top: 25px;
         padding-top: 15px;
@@ -55,7 +54,16 @@
 
     <div class="user-stories-result">
         <h3> User Stories </h3>
-        {% if total_actor == 1 %}
+        {% for mult in ACT %}
+            {% for second in mult %}
+                {% if second|length == 3 %}
+                    <p>I as {{ second.0 }}, I acan "{{ second.1 }}", So that "{{ second.2 }}"</p>
+                {% else %}
+                    <p>I as {{ second.0 }}, I can "{{ second.1 }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <!-- {% if total_actor == 1 %}
             {% for list_item in list_activity %}
                 {% for list_act in list_actor %}
                     <p>i as a {{ list_act }} can "{{ list_item }}"</p>
@@ -72,7 +80,7 @@
                 {% endfor %}  
             {% endwith %}   
             {% endfor %}
-        {% endif %}
+        {% endif %} -->
         <center><button onclick="showDiv()" >Show detail of components</button></center>
     </div>
     <div id="Detail" class="Result-container" style="display:none" >
@@ -83,9 +91,12 @@
         {% endfor %}
             <center><h5> Aspect of What </h5></center>
         {% for list_item in list_activity %}
-            <center><p> act : </p></center>
             <center>{{ list_item }}</center>
         {% endfor %} 
+        <center><h5> Aspect of Why : </h5></center>
+        {% for TextAnnotatate in TextAnnotation %}
+            <center>{{ TextAnnotatate }}</center>
+        {% endfor %}
     </div>
 </div>
 <script>
@@ -98,26 +109,5 @@
       }
     }
     </script>
-=======
-    .Result-container{
-        padding-top: 15px;
-        padding-bottom: 70px;
-        font-family: sans-serif;
-    }
-</style>
-{% extends 'masterpage.html'%}
-{% block content %}
-    <div class="Result-container">
-            <center><h5> LIST OF ACTOR </h5></center>
-        {% for list_act in list_actor %}
-            <center>{{ list_act }}</center>
-        {% endfor %}
-            <center><h5> LIST OF ACTIVITY </h5></center>
-        {% for list_item in list_activity %}
-            <center><p> act : </p></center>
-            <center>{{ list_item }}</center>
-        {% endfor %}
-</div>
->>>>>>> 3496840375ecde488c3fca323c7ce098f1c3e8af
 {% endblock %}
 </html>
