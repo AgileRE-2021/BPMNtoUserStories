@@ -28,14 +28,14 @@ Secara garis besar, aspek-aspek pembentuk dari User Stories sebagai output yang 
 3. Aspect of Why : Mewakili alasan untuk mencapai tujuan
 
 ### Sistem Pembangun
-Aplikasi CDG dibangun dengan memanfaatkan *software*, *framework*, dan beberapa bahasa pemrograman, diantaranya adalah sebagai berikut :
-- [VsCode Editor](https://code.visualstudio.com/)
-- [SQLite Database](https://www.sqlite.org/index.html)
-- [GitHub](https://github.com/)
-- [Django Framework](https://www.djangoproject.com/) 
-- [Bootstrap Framework](https://getbootstrap.com/)
-- [Python](https://www.python.org/)
-- [Javascript](javascript.com)
+Aplikasi BPMN2US dibangun dengan memanfaatkan *software*, *framework*, dan beberapa bahasa pemrograman, diantaranya adalah sebagai berikut :
+- [VsCode Editor]
+- [SQLite Database]
+- [GitHub]
+- [Django Framework]
+- [Bootstrap Framework]
+- [Python]
+- [Javascript]
 
 ## Petunjuk Instalasi 
 Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan pada sesi terminal, berikut prosedur yang dapat dilakukan :
