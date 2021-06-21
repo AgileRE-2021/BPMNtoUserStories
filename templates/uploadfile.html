@@ -39,6 +39,8 @@
         background-image: url(/static/image/background.png); 
         background-repeat:no-repeat;
         background-size:100%;
+        width: 1880px;
+        height: 900px;
     }
     section{
         min-height: 100vh;
@@ -109,7 +111,10 @@
     h4{
         margin-top: 4%;
     }
-    
+     
+    .image-shadow{
+        box-shadow: 0.4rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+    }
     
 </style>
 {% extends 'masterpage.html'%}
@@ -139,9 +144,29 @@
 <section id="sec-2">
     <div class="requirement-container">
         <center><h2>How To Use ?</h2></center>
-        <h4> Tools Recommendation for BPMN Editor : </h4>
+        <h3> Tools Recommendation for BPMN Editor : </h3>
         <center><img src="{% static 'image/Bizagi.jpg' %}" width="140px"></center>
-        <h4> Procedure : </h4>
+        <h3> Procedure : </h3>
+        <center><h4> 1. Enter the home page, then click "Start BMPN2US" </h4></center>
+        <div class="image-shadow">
+            <center><img src="{% static 'image/step1.png' %}" height="650px"></center>
+        </div>
+        <center><h4> 2. Then press “Choose File” </h4></center>
+        <div class="image-shadow">
+            <center><img src="{% static 'image/step2.png' %}" height="650px"></center>
+        </div>
+        <center><h4> 3. Then select the BPMN file that you want to translate to User Stories (filetype must be .XML / .XPDL) and Press "Open" </h4></center>
+        <div class="image-shadow">
+            <center><img src="{% static 'image/step3.png' %}" height="650px"></center>
+        </div>
+        <center><h4> 4. If you have finished uploading the appropriate file, then press "Submit" </h4></center>
+        <div class="image-shadow">
+            <center><img src="{% static 'image/step4.png' %}" height="650px"></center>
+        </div>
+        <center><h4> 5. After clicking Submit, your BPMN file is already seen turning into User Stories </h4></center>
+        <div class="image-shadow">
+            <center><img src="{% static 'image/step5.png' %}" padding-top=1rem height="650px"></center>
+        </div>
     </div>
 </section>
 {% endblock %}
