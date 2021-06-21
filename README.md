@@ -86,7 +86,7 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
 
 ## Petunjuk Penggunaan
 Cara Kerja Translasi BPMN to User Stories
-1. Masuk halaman home, kemudian klik “Start it now”
+1. Masuk halaman home, kemudian klik “Start BPMN2US”
 2. Setelah itu tekan “Choose File” dan kemudian pilih file BPMN yang ingin anda Translasikan ke User Stories (filetype harus .XML / .XPDL)
 3. Jika sudah selesai upload file yang telah diinginkan, kemudian tekan “Submit”
 4. Setelah klik Submit, maka file BPMN anda sudah terlihat berubah menjadi User Stories
