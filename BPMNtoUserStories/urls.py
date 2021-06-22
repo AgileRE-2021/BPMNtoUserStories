@@ -12,6 +12,7 @@ urlpatterns = [
     path('proses/', views.parsing, name='parsing'),
     path('about/', views.about, name='about'),
     path('history/', views.history, name='history'),
+    path('documentation/', views.documentation, name='documentation'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

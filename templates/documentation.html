@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<style>
+    .top-container-bg{
+        padding-top:10px;
+        padding-bottom:10px;
+        background: url(/static/image/background-top-container.png); 
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+    .top-container{
+        width: 75%;
+        margin: auto
+    }
+    .middle-container{
+        padding-top:10px;
+        padding-bottom:10px;
+        width: 75%;
+        margin: auto
+    }
+    .about-container {
+        margin-top: 25px;
+        padding-top: 24px;
+        padding-left: 20px;
+        padding-bottom: 25px;
+        padding-right:20px;
+        box-shadow: 0.2rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+        text-align:center;
+        font-family: sans-serif;
+        background-color: white;
+    }
+    .membership-container {
+        margin-top: 25px;
+        padding-top: 24px;
+        padding-left: 20px;
+        padding-bottom: 25px;
+        padding-right:20px;
+        box-shadow: 0.2rem 0.7rem 0.97rem 0.25rem rgb(129 129 130 / 47%);
+        border-radius: 30px;
+        font-family: sans-serif;
+    }
+    .membership-top-line{
+        display:flex;
+    }
+    .membership-bottom-line{
+        margin-top: 7%;
+        display:flex;
+    }
+    .Result-container{
+        margin-top:70px;
+        padding-top: 15px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        padding-right:20px;
+        box-shadow: 0 0.7rem 0.97rem 0 rgb(129 129 130 / 43%);
+        border-radius: 30px;
+        text-align:center;
+        font-family: sans-serif;
+    }
+    .all-page{
+        margin-top: 30px !important;
+        padding-bottom: 140px;
+        display: block;
+        margin:auto;
+    }
+    .profile-container{
+       text-align: center;
+       margin-left: 7%;
+    }
+    button {
+        background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
+        border:none;
+        border-radius: 20px;
+        font-family: sans-serif;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
+        /* background-color: rgb(170, 167, 167); */
+    }
+</style>
+{% extends 'masterpage.html'%}
+{% block content %}
+{% load static %}
+<div class="all-page">
+    <div class="top-container-bg">
+        <div class="top-container">
+            <h1 style="font-family: sans-serif;color:#162c4e">Documentation </h1>
+            <div class="about-container">
+                <b> Tata cara penggunaan : </b>
+                <center><h4> 1. Enter the home page, then click "Start BMPN2US" </h4></center>
+                <div class="image-shadow">
+                    <center><img src="{% static 'image/step1.png' %}" width="400px"></center>
+                </div>
+                <center><h4> 2. Then press “Choose File” </h4></center>
+                <div class="image-shadow">
+                    <center><img src="{% static 'image/step2.png' %}" height="400px"></center>
+                </div>
+                <center><h4> 3. Then select the BPMN file that you want to translate to User Stories (filetype must be .XML / .XPDL) and Press "Open" </h4></center>
+                <div class="image-shadow">
+                    <center><img src="{% static 'image/step3.png' %}" height="400px"></center>
+                </div>
+                <center><h4> 4. If you have finished uploading the appropriate file, then press "Submit" </h4></center>
+                <div class="image-shadow">
+                    <center><img src="{% static 'image/step4.png' %}" height="400px"></center>
+                </div>
+                <center><h4> 5. After clicking Submit, your BPMN file is already seen turning into User Stories </h4></center>
+                <div class="image-shadow">
+                    <center><img src="{% static 'image/step5.png' %}" padding-top=1rem height="400px"></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</html>

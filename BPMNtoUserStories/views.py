@@ -4,7 +4,8 @@ import xml.etree.ElementTree as ET
 import os
 import nltk
 from nltk.tokenize import word_tokenize, sent_tokenize
-
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 def masterpages(request):
      return render(request,'masterpage.html')
@@ -54,11 +55,35 @@ def parsing(request):
             for i in tree.findall('.//Lane'):       #PASSING UNTUK NILAI KOMPONEN USER STORIES
                 name = i.get('Name')
                 list_actor.append(name)
-            for i in tree.findall('.//Activity/Implementation/Task/.....'):
+
+            if(len(list_actor) < 1):
+                list_actor.append("User")           #APABILA TIDAK ADA LANE, JADI USER
+                
+            for i in tree.findall('.//Activity/Implementation/Task/.....'):         #LIBRARY NLTK BUAT NLP
                 activity = i.get('Name')
-                print(activity)
-                if (activity != "Start" and activity != "End" and "?" not in activity and activity):
-                    list_activity.append(activity)
+                # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
+                subject = "i"
+                space = " "
+                raw_percobaan = subject + space + activity
+                #case_folding
+                raw_percobaan = raw_percobaan.casefold()
+                #Tokenization
+                text = nltk.word_tokenize(raw_percobaan)
+                print(text[1])
+
+                #PART OF SPEECH TAGGING
+                POS = nltk.pos_tag(text)
+                # DEBUGGING ONLY
+                print("POS")
+                print(POS)
+
+                #DEFINE ONLY VB
+                print("===VERBS===")
+                print(POS[1][1])
+                if (POS[1][1]=='VBP' or POS[1][1]=='VB' or POS[1][1]=='VBD' or POS[1][1]=='VBN' or POS[1][1]=='VBG'):
+                    if (activity != "Start" and activity != "End" and "?" not in activity and activity):
+                        list_activity.append(activity.casefold())
+
             total_actor = len(list_actor)
             
 
@@ -243,6 +268,9 @@ def parsing(request):
 
 def history(request):
     return render(request,'history.html')
+
+def documentation(request):
+    return render(request, 'documentation.html')
 
 
 # def generate_pdf(request):
