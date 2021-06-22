@@ -82,7 +82,9 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
     python manage.py runserver
     ```
 15. Menuju browser dengan alamat http://127.0.0.1:8000/
-16. [Bila ada Tambahan]
+
+> [Video Panduan Cara Instalasi](***link youtube***)
+
 
 ## Petunjuk Penggunaan
 Cara Kerja Translasi BPMN to User Stories
@@ -90,11 +92,7 @@ Cara Kerja Translasi BPMN to User Stories
 2. Setelah itu tekan “Choose File” dan kemudian pilih file BPMN yang ingin anda Translasikan ke User Stories (filetype harus .XML / .XPDL)
 3. Jika sudah selesai upload file yang telah diinginkan, kemudian tekan “Submit”
 4. Setelah klik Submit, maka file BPMN anda sudah terlihat berubah menjadi User Stories
-5. [Bila ada Tambahan]
-
-Cara Kerja Cek History
-1. (Dalam Pengembangan)
-2. 
+5. Untuk mengetahui lebih detail, tekan tombol "Show detail of components"
 
 > [Video Panduan Penggunaan](***link youtube***)
 
