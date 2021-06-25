@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import os
 import nltk
 from nltk.tokenize import word_tokenize, sent_tokenize
-from .models import BPMN
+from .models import BPMN, TextUserStory, UserStories
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
@@ -260,12 +260,55 @@ def parsing(request):
                 print("FILE NAME")
                 print(file_name)
                 # namaProject = request.POST.get("nama_project")
-
+                
                 newBPMN = BPMN(
                     nama_bpmn=file_name,
                 )
 
                 newBPMN.save()
+
+                # Get id_bpmn
+                bpmn_target_data = BPMN.objects.latest('id_bpmn')
+                bpmn_target = bpmn_target_data.id_bpmn
+
+                # Get nama_bpmn
+                usNameSize = len(file_name)
+                usName = file_name[:usNameSize - 5]
+                print(usName + '_us')
+
+                newUS = UserStories(
+                    nama_us = usName,
+                    id_bpmn = bpmn_target,
+                )
+
+                newUS.save()
+
+                # Get id_us
+                us_target_data = UserStories.objects.latest('id_us')
+                us_target = us_target_data.id_us
+
+                for i in range (0,len(ACT)):
+                        for j in range (0,len(ACT[i])): 
+                            if (len(ACT[i][j])==3):
+                                print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1] + ", so that " + why[z][1] )
+                                newTUS = TextUserStory(
+                                    id_us = us_target,
+                                    text_who = ACT[i][j][0],
+                                    text_what = ACT[i][j][1],
+                                    text_why = why[z][1],
+                                )
+
+                                newTUS.save()
+                            else :
+                                print ("I as " + ACT[i][j][0] + ", i can " + ACT[i][j][1])
+                                newTUS = TextUserStory(
+                                    id_us = us_target,
+                                    text_who = ACT[i][j][0],
+                                    text_what = ACT[i][j][1],
+                                )
+
+                                newTUS.save()
+
 
                 context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor,'ACT':ACT, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)

@@ -10,7 +10,7 @@ class BPMN(models.Model):
 
 class UserStories(models.Model):
     id_us = models.AutoField(primary_key=True)
-    id_bpmn = models.ForeignKey(BPMN, on_delete=models.CASCADE)
+    id_bpmn = models.IntegerField(max_length=25, null=False)
     nama_us = models.CharField(max_length=25, null=False)
     created_at = models.DateTimeField(auto_now=True)
 
@@ -19,11 +19,10 @@ class UserStories(models.Model):
 
 class TextUserStory(models.Model):
     id_text_us = models.AutoField(primary_key=True)
-    id_us = models.ForeignKey(UserStories, on_delete=models.CASCADE)
+    id_us = models.IntegerField(max_length=25, null=False)
     text_who = models.CharField(max_length=25, null=False)
     text_what = models.CharField(max_length=25, null=False)
     text_why = models.CharField(max_length=25, null=True)
-    nama_us = models.CharField(max_length=25, null=False)
 
     class Meta:
         db_table = 'text_user_stories'
