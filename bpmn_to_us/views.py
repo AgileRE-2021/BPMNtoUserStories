@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 import os
 import nltk
 from nltk.tokenize import word_tokenize, sent_tokenize
+from .models import BPMN
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
@@ -256,7 +257,15 @@ def parsing(request):
 
                     
                     
-                            
+                print("FILE NAME")
+                print(file_name)
+                # namaProject = request.POST.get("nama_project")
+
+                newBPMN = BPMN(
+                    nama_bpmn=file_name,
+                )
+
+                newBPMN.save()
 
                 context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor,'ACT':ACT, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)
