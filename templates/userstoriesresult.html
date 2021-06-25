@@ -54,6 +54,13 @@
 
     <div class="user-stories-result">
         <h3> User Stories </h3>
+        {% if total_actor == 1 %}
+            {% for list_item in list_activity %}
+                {% for list_act in list_actor %}
+                    <p>i as a {{ list_act }} can "{{ list_item }}"</p>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
         {% for mult in ACT %}
             {% for second in mult %}
                 {% if second|length == 3 %}
