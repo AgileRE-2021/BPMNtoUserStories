@@ -10,6 +10,7 @@ class BPMN(models.Model):
 
 class UserStories(models.Model):
     id_us = models.AutoField(primary_key=True)
+    id_bpmn = models.ForeignKey(BPMN, on_delete=models.CASCADE)
     nama_us = models.CharField(max_length=25, null=False)
     created_at = models.DateTimeField(auto_now=True)
 
