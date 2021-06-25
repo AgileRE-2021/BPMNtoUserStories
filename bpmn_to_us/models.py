@@ -19,6 +19,7 @@ class UserStories(models.Model):
 
 class TextUserStory(models.Model):
     id_text_us = models.AutoField(primary_key=True)
+    id_us = models.ForeignKey(UserStories, on_delete=models.CASCADE)
     text_who = models.CharField(max_length=25, null=False)
     text_what = models.CharField(max_length=25, null=False)
     text_why = models.CharField(max_length=25, null=True)
