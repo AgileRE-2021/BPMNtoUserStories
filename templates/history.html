@@ -24,10 +24,39 @@
 .image-section{
     padding-left: 5px;
 } 
+.slide-in-right {
+	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
 {% load static %}
+<div class="slide-in-right">
 <div class="whole-page">
     <div class="content-container">
         <div class="image-section">
@@ -44,6 +73,7 @@
             <img src="{% static 'image/logo.jpg' %}" width="170px">
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}

@@ -1,67 +1,164 @@
 <!DOCTYPE html>
 {% load static %}
 <style>
-.image-container{
-    padding-top: 8%;
-    /* position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container-bg{
-        background-image: url(/static/image/home.png); 
-        background-repeat:no-repeat;
-        background-size:100%;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-    }
-.wrapper{
-    width: 900px;
-    margin: auto;
-    position: relative;
+:root {
+  --secondary-color: white;
+  --contrast-color: #162c4e;
 }
-button {
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -10;
+  background-color: var(--contrast-color);
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  animation: expand .8s ease forwards;
+  background-color: var(--secondary-color);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all .8s ease;
+}
+
+.container_content {
+ width: 50%;
+}
+
+.container_content_inner {
+  width: 80%;
+  margin-left: 80px;
+}
+
+.container_outer_img {
+  margin: 50px;
+  width: 50%;
+  overflow: hidden;
+}   
+    
+.container_img {
+  width: 100%;
+  animation: slideIn 1.5s ease-in-out forwards;
+}
+
+.par {
+  height: auto;
+  overflow: hidden;
+}
+
+p{
+  line-height: 28px;
+  transform: translateY(300px);
+  animation: slideUp .8s ease-in-out forwards .8s;
+  color:black;
+}
+
+.btns {
+  height: 100%;
+  position: relative;
+  width: 150px;
+  overflow: hidden;
+}
+
+.btns_more {
+  margin-top: 15px;
   background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
   border:none;
   border-radius: 20px;
   font-family: sans-serif;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
+  outline: none;
+  transform: translateY(50px);
+  animation: slideUp .8s ease-in-out  forwards 1s;
 }
+
 button:hover {
     background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
-    /* background-color: rgb(170, 167, 167); */
 }
-body {
-    background-image: url('image/home.png');
+
+.title {
+  overflow: hidden;
+  height: auto;
 }
-.location{
-    padding-top:400px;
-    padding-left: 900px;
-    
-    
+
+h1 {
+    font-size: 40px;
+    color: var(--contrast-color);
+    margin-bottom: 20px;
+    transform: translateY(100px);
+    animation: slideUp .8s ease forwards .5s;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(500px) scale(.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: translateX(1400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
 
 </style>
 
-
-<body >
-<div  class="container-bg">
-<div class="wrapper">
-    <div class="location">
-    <center><a href="/uploadfile"
-        <center><button type="submit"> Start BPMN2US </button></center>
-        </a></center>
+<div class= 'container'>
+    <div class="container_content">
+    <div class="container_content_inner">
+    <div class="title">
+      <h1>BPMN2US</h1>
     </div>
-</div>
-</div>
-        
-</body>
+    <div class="par">
+    <p>
+    Welcome in BPMN2US, Application that help developer in order to generate BPMN to User Stories only in a click, we used language processing in order to increase accuration od the result.
+    </p>
+    </div>
+    <div class="btns">
+    <a href="/uploadfile"><button class='btns_more'> See more </button></a>
+    </div>
+    </div>
+    </div>
+     <div class="container_outer_img">
+     <div class="img-inner">
+     <img src="{% static 'image/logo.jpg' %}" alt="" class="container_img"/>
+           </div>
+         </div>
+      </div>
+    <div class="overlay"></div>
 <footer></footer>
 </html>
