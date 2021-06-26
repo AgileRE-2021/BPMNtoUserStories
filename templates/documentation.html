@@ -84,19 +84,53 @@
         background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
         /* background-color: rgb(170, 167, 167); */
     }
+    .color-change-5x {
+	-webkit-animation: color-change-5x 8s linear infinite alternate both;
+	        animation: color-change-5x 8s linear infinite alternate both;
+    }
+    .slide-in-right {
+	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes slide-in-right {
+    0% {
+        -webkit-transform: translateX(1000px);
+                transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+    }
+    @keyframes slide-in-right {
+    0% {
+        -webkit-transform: translateX(1000px);
+                transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+    }
+
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
 {% load static %}
 <div class="all-page">
+<div class="slide-in-right">
     <div class="top-container-bg">
         <div class="top-container">
             <h1 style="font-family: sans-serif;color:#162c4e">Documentation </h1>
             <div class="about-container">
                 <b> Tata cara penggunaan : </b>
-                <center><h4> 1. Enter the home page, then click "Start BMPN2US" </h4></center>
+                <center><h4> 1. Enter the home page, then click "See More" </h4></center>
                 <div class="image-shadow">
-                    <center><img src="{% static 'image/step1.png' %}" width="400px"></center>
+                    <center><img src="{% static 'image/step1.1.png' %}" width="400px"></center>
                 </div>
                 <center><h4> 2. Then press “Choose File” </h4></center>
                 <div class="image-shadow">
@@ -117,6 +151,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}

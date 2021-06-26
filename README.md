@@ -67,23 +67,25 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
    ```sh
    pip install django
    ```
-10. Lakukan instalasi mysqlclient
+10. Lakukan instalasi requirements
     ```sh
-    pip install mysqlclient
+    pip install -r requirements.txt
     ```
 11. Setelah itu nyalakan Aplikasi XAMPP Control Panel dan sambungkan pada Apache dan MySQL.
 12. Kembali ke cmd
-13. Lakukan migrate
+13. Buat migrations
+    ```sh
+    python manage.py make migrations
+    ```
+14. Lakukan migrate
     ```sh
     python manage.py migrate
     ```
-14. Jalankan aplikasi pada *localhost*
+15. Jalankan aplikasi pada *localhost*
     ```sh
     python manage.py runserver
     ```
-15. Menuju browser dengan alamat http://127.0.0.1:8000/
-
-> [Video Panduan Cara Instalasi](***link youtube***)
+16. Menuju browser dengan alamat http://127.0.0.1:8000/
 
 
 ## Petunjuk Penggunaan
@@ -94,7 +96,6 @@ Cara Kerja Translasi BPMN to User Stories
 4. Setelah klik Submit, maka file BPMN anda sudah terlihat berubah menjadi User Stories
 5. Untuk mengetahui lebih detail, tekan tombol "Show detail of components"
 
-> [Video Panduan Penggunaan](***link youtube***)
 
 ## Informasi Lainnya
 ### Anggota Proyek
