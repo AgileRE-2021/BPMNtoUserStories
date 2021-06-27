@@ -8,6 +8,18 @@ from .models import BPMN, TextUserStory, UserStories
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
+from .render import Render
+from django.views.generic import View
+
+class Pdf(View):
+
+    def getpdf(request,id):
+        text_user_story = TextUserStory.objects.filter(id_us=id)
+        params = {
+            'data': text_user_story,
+        }
+        return Render.render('result_pdf.html', params)
+
 def masterpages(request):
      return render(request,'masterpage.html')
 
@@ -65,7 +77,9 @@ def parsing(request):
                 # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
                 subject = "i"
                 space = " "
-                raw_percobaan = subject + space + activity
+                adverb = "can"
+                space2 = " "
+                raw_percobaan = subject + space + adverb + space2 + activity
                 #case_folding
                 raw_percobaan = raw_percobaan.casefold()
                 #Tokenization
@@ -80,13 +94,14 @@ def parsing(request):
 
                 #DEFINE ONLY VB
                 print("===VERBS===")
-                print(POS[1][1])
-                if (POS[1][1]=='VBP' or POS[1][1]=='VB' or POS[1][1]=='VBD' or POS[1][1]=='VBN' or POS[1][1]=='VBG'):
-                    if (activity != "Start" and activity != "End" and "?" not in activity and activity):
-                        list_activity.append(activity.casefold())
+                print(POS[2][0])
+                if (POS[2][1]=='VBP' or POS[2][1]=='VB' or POS[2][1]=='VBD' or POS[2][1]=='VBZ' or POS[2][1]=='VBN' or POS[2][1]=='VBG'):
+                    for i in range(3,len(POS)):
+                        if (POS[i][1]=='NN'):
+                            if (activity != "Start" and activity != "End" and "?" not in activity and activity):
+                                list_activity.append(activity.casefold())
 
             total_actor = len(list_actor)
-            
 
             Artifacts = []
             TextAnnotation = []
@@ -173,6 +188,32 @@ def parsing(request):
                                     # arr_Name.append(activity_multiple)
                                     # arr_Name.append(activity_multiple) #coba
                                     # ACT[j].append(activity_multiple)
+                                # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
+                                subject = "i"
+                                space = " "
+                                adverb = "can"
+                                space2 = " "
+                                raw_percobaan = subject + space + adverb + space2 + activity_multiple
+                                #case_folding
+                                raw_percobaan = raw_percobaan.casefold()
+                                #Tokenization
+                                text = nltk.word_tokenize(raw_percobaan)
+                                print(text[1])
+
+                                #PART OF SPEECH TAGGING
+                                POS = nltk.pos_tag(text)
+                                # DEBUGGING ONLY
+                                print("POS")
+                                print(POS)
+
+                                #DEFINE ONLY VB
+                                print("===VERBS===")
+                                print(POS[2][0])
+                                if (POS[2][1]=='VBP' or POS[2][1]=='VB' or POS[2][1]=='VBD' or POS[2][1]=='VBZ' or POS[2][1]=='VBN' or POS[2][1]=='VBG'):
+                                    for i in range(3,len(POS)):
+                                        if (POS[i][1]=='NN'):
+                                            if (activity_multiple != "Start" and activity_multiple != "End" and "?" not in activity_multiple and activity_multiple):
+                                                list_activity.append(activity_multiple.casefold())
                    
                     
                     #ASPECT OF WHY PROCESSING
@@ -317,12 +358,12 @@ def parsing(request):
                 context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)
 
-
-def history(request):
-    return render(request,'history.html')
-
 def documentation(request):
     return render(request, 'documentation.html')
+
+def history(request):
+    bpmn_target_data = UserStories.objects.all
+    return render(request,"history.html",{'data':bpmn_target_data})
 
 
 # def generate_pdf(request):
