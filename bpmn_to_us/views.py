@@ -8,8 +8,6 @@ from .models import BPMN, TextUserStory, UserStories
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
-<<<<<<< HEAD
-=======
 from .render import Render
 from django.views.generic import View
 
@@ -22,7 +20,6 @@ class Pdf(View):
         }
         return Render.render('result_pdf.html', params)
 
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 def masterpages(request):
      return render(request,'masterpage.html')
 
@@ -36,21 +33,6 @@ def uploadpage(request):
      return render(request,'uploadfile.html')
 
 def parsing(request):
-<<<<<<< HEAD
-    raw_percobaan = "Identify Corpus test"
-    raw_percobaan2 = "Detect car allocation"
-    raw_percobaan3 = "car is allocated"
-    print("TEST COBA NLTK")
-
-    #Tokenization
-    text = nltk.word_tokenize(raw_percobaan2)
-    print(text)
-
-    #PART OF SPEECH TAGGING
-    POS = nltk.pos_tag(text)
-    print(POS)
-=======
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
     if request.method == 'POST':
         uploaded_file = request.FILES['xml']
         fs = FileSystemStorage()
@@ -83,13 +65,9 @@ def parsing(request):
                 # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
                 subject = "i"
                 space = " "
-<<<<<<< HEAD
-                raw_percobaan = subject + space + activity
-=======
                 adverb = "can"
                 space2 = " "
                 raw_percobaan = subject + space + adverb + space2 + activity
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
                 #case_folding
                 raw_percobaan = raw_percobaan.casefold()
                 #Tokenization
@@ -104,15 +82,6 @@ def parsing(request):
 
                 #DEFINE ONLY VB
                 print("===VERBS===")
-<<<<<<< HEAD
-                print(POS[1][1])
-                if (POS[1][1]=='VBP' or POS[1][1]=='VB' or POS[1][1]=='VBD' or POS[1][1]=='VBN' or POS[1][1]=='VBG'):
-                    if (activity != "Start" and activity != "End" and "?" not in activity and activity):
-                        list_activity.append(activity.casefold())
-
-            total_actor = len(list_actor)
-            
-=======
                 print(POS[2][0])
                 if (POS[2][1]=='VBP' or POS[2][1]=='VB' or POS[2][1]=='VBD' or POS[2][1]=='VBZ' or POS[2][1]=='VBN' or POS[2][1]=='VBG'):
                     for i in range(3,len(POS)):
@@ -120,7 +89,6 @@ def parsing(request):
                             if (activity != "Start" and activity != "End" and "?" not in activity and activity):
                                 list_activity.append(activity.casefold())
                                 break
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 
             Artifacts = []
             TextAnnotation = []
@@ -132,14 +100,10 @@ def parsing(request):
                 if (annotation == "Annotation"):
                     Artifacts.append(annotation)
             
-<<<<<<< HEAD
-            # mengecek apakah total aktor lebih dari satu dan mengambil nilai koordinat dari setiap lane didalam array
-=======
             total_actor = len(list_actor)
             # mengecek apakah total aktor lebih dari satu dan mengambil nilai koordinat dari setiap lane didalam array
 
 
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
             if (total_actor > 1): 
                 koordinatX = [] #koordinat sumbu x dari setiap swimlane
                 koordinatY = [] #koordinat sumbu y dari setiap swimlane
@@ -210,14 +174,6 @@ def parsing(request):
                                 id = elem.get('Id') #coba
                                 activity_multiple = elem.get('Name')
                                 # if (activity_multiple != "Start" and activity_multiple != "End" and "?" not in activity_multiple and activity_multiple):
-<<<<<<< HEAD
-                                ACT[j].append(id) #coba
-                                    # arr_Name.append(activity_multiple)
-                                    # arr_Name.append(activity_multiple) #coba
-                                    # ACT[j].append(activity_multiple)
-                   
-                    
-=======
                                     # arr_Name.append(activity_multiple)
                                     # arr_Name.append(activity_multiple) #coba
                                     # ACT[j].append(activity_multiple)
@@ -256,7 +212,6 @@ def parsing(request):
                         # print("===STOP===")
 
                     # ACT[0] = list(set(ACT[0]))
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
                     #ASPECT OF WHY PROCESSING
                     if (len(Artifacts)>0):
                         Arr_Pair = []  #Pasangan Activity dengan Association
@@ -396,14 +351,6 @@ def parsing(request):
                 return render(request,'userstoriesresult.html',context)
             else : 
                 print("less than 2")
-<<<<<<< HEAD
-                context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor, 'TextAnnotation':TextAnnotation}
-                return render(request,'userstoriesresult.html',context)
-
-
-def history(request):
-    return render(request,'history.html')
-=======
                 print("FILE NAME")
                 print(file_name)
                 # namaProject = request.POST.get("nama_project")
@@ -445,18 +392,14 @@ def history(request):
 
                 context = {'list_actor':list_actor, 'list_activity':list_activity,'total_actor':total_actor, 'TextAnnotation':TextAnnotation}
                 return render(request,'userstoriesresult.html',context)
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 
 def documentation(request):
     return render(request, 'documentation.html')
 
-<<<<<<< HEAD
-=======
 def history(request):
     bpmn_target_data = UserStories.objects.all
     return render(request,"history.html",{'data':bpmn_target_data})
 
->>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 
 # def generate_pdf(request):
 #     html_string = render_to_string('pdf.html')
