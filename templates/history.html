@@ -24,6 +24,46 @@
 .image-section{
     padding-left: 5px;
 } 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+.section-2{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.section-created_at{
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-right: 10%;
+}
+.section-3{
+    right: 0;
+    position: absolute;
+    margin-top: 20px;
+    margin-right: 20%;
+}
+
+button {
+  background-image: linear-gradient(to right, #6e1b83 , #7f3b96,#dd2e8f); /* Green */
+  border:none;
+  border-radius: 20px;
+  font-family: sans-serif;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+button:hover {
+    background-image: linear-gradient(to right, #1c2276 , #3373c7,#6545f2); /* Green */
+    /* background-color: rgb(170, 167, 167); */
+}
+
+=======
+>>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 .slide-in-right {
 	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -52,27 +92,33 @@
     opacity: 1;
   }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> bf4417815ca9a79e9c77131724ae71eef0d4b369
+>>>>>>> 957b6bb07c2238fe9f0d6715c6460f5ad8b0de90
 </style>
 {% extends 'masterpage.html'%}
 {% block content %}
 {% load static %}
 <div class="slide-in-right">
 <div class="whole-page">
-    <div class="content-container">
-        <div class="image-section">
-            <img src="{% static 'image/logo.jpg' %}" width="170px">
+    {% for d in data %}  
+        <div class="content-container">
+            <div class="image-section">
+                <img src="{% static 'image/logo.jpg' %}" width="170px">
+            </div>
+            <div class="section-2">
+                <h5>User Stories : {{ d.nama_us }} </h5> 
+            </div>
+            <div class="section-created_at">
+                <h5>Created at : {{ d.created_at }} </h5> 
+            </div>
+            <div class="section-3">
+                <a href={% url 'pdf' id=d.id_us %}><button> Open PDF </button></a>
+            </div>
         </div>
-    </div>
-    <div class="content-container">
-        <div class="image-section">
-            <img src="{% static 'image/logo.jpg' %}" width="170px">
-        </div>
-    </div>
-    <div class="content-container">
-        <div class="image-section">
-            <img src="{% static 'image/logo.jpg' %}" width="170px">
-        </div>
-    </div>
+    {% endfor %} 
+</div>
 </div>
 </div>
 
