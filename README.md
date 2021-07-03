@@ -75,7 +75,7 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
 12. Kembali ke cmd
 13. Buat migrations
     ```sh
-    python manage.py make migrations
+    python manage.py makemigrations
     ```
 14. Lakukan migrate
     ```sh
