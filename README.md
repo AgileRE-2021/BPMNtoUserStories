@@ -11,6 +11,7 @@
   * [Kontak](#kontak)
 
 <!-- TENTANG APLIKASI -->
+![BPMN2US](https://user-images.githubusercontent.com/79798622/124710152-949cfe00-df26-11eb-9c10-5871be8f91a0.JPG)
 ## Tentang Aplikasi
 ### Definisi
 Aplikasi BPMN to User Stories (BPMNtoUS) merupakan sebuah aplikasi berbasis web dimana aplikasi ini dapat melakukan translasi dari BPMN menjadi User Stories. 
