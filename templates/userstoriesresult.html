@@ -57,16 +57,34 @@
         {% if total_actor == 1 %}
             {% for list_item in list_activity %}
                 {% for list_act in list_actor %}
-                    <p>i as a {{ list_act }} can "{{ list_item }}"</p>
+                    {% with list_act|make_list|first as checking %}
+                        {% if checking  == "A" or checking  == "I" or list_act != "User" and checking  == "U" or checking  == "E" or checking  == "O" %}
+                            <p>I as an {{ list_act }}, I can "{{ list_item }}"</p>
+                        {% else %}
+                            <p>I as a {{ list_act }} can "{{ list_item }}"</p>
+                        {% endif %}
+                    {% endwith %}
                 {% endfor %}
             {% endfor %}
         {% endif %}
         {% for mult in ACT %}
             {% for second in mult %}
                 {% if second|length == 3 %}
-                    <p>I as {{ second.0 }}, I acan "{{ second.1 }}", So that "{{ second.2 }}"</p>
+                    {% with second.0|make_list|first as checking %}
+                        {% if checking  == "A" or checking  == "I" or second.0 != "User" and checking  == "U" or checking  == "E" or checking  == "O"%}
+                            <p>I as an {{ second.0 }}, I can "{{ second.1 }}", So that "{{ second.2 }}"</p>
+                        {% else %}
+                            <p>I as a {{ second.0 }}, I can "{{ second.1 }}", So that "{{ second.2 }}"</p>
+                        {% endif %}
+                    {% endwith %}
                 {% else %}
-                    <p>I as {{ second.0 }}, I can "{{ second.1 }}"</p>
+                    {% with second.0|make_list|first as checking %}
+                        {% if checking  == "A" or checking  == "I" or second.0 != "User" and checking  == "U" or checking  == "E" or checking  == "O"%}
+                            <p>I as an {{ second.0 }}, I can "{{ second.1 }}"</p>
+                        {% else %}
+                            <p>I as a {{ second.0 }}, I can "{{ second.1 }}"</p>
+                        {% endif %}
+                    {% endwith %}
                 {% endif %}
             {% endfor %}
         {% endfor %}
