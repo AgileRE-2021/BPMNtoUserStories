@@ -42,7 +42,7 @@ def parsing(request):
         full_path = os.path.join(dir,file_name)
         file_output = "clean" +file_name
         full_path_new = os.path.join(dir,file_output)
-        with open(full_path, 'r') as infile, open(full_path_new, "w") as outfile: #MEMBERSIHKAN FORMAT XPDL AGAR TAG PADA XML TERDEFINISI
+        with open(full_path, 'r') as infile, open(full_path_new, "w") as outfile: 
             data = infile.read()
             data = data.replace('xmlns="http://www.wfmc.org/2009/XPDL2.2"', '')
             outfile.write(data)
@@ -53,34 +53,28 @@ def parsing(request):
             root = tree.getroot()
             list_actor = []
             list_activity = []
-            for i in tree.findall('.//Lane'):       #PASSING UNTUK NILAI KOMPONEN USER STORIES
+            for i in tree.findall('.//Lane'):
                 name = i.get('Name')
                 list_actor.append(name)
 
             if(len(list_actor) < 1):
-                list_actor.append("User")           #APABILA TIDAK ADA LANE, JADI USER
+                list_actor.append("User")
                 
-            for i in tree.findall('.//Activity/Implementation/Task/.....'):         #LIBRARY NLTK BUAT NLP
+            for i in tree.findall('.//Activity/Implementation/Task/.....'):         
                 activity = i.get('Name')
-                # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
                 subject = "i"
                 space = " "
                 adverb = "can"
                 space2 = " "
                 raw_percobaan = subject + space + adverb + space2 + activity
-                #case_folding
                 raw_percobaan = raw_percobaan.casefold()
-                #Tokenization
                 text = nltk.word_tokenize(raw_percobaan)
                 print(text[1])
 
-                #PART OF SPEECH TAGGING
                 POS = nltk.pos_tag(text)
-                # DEBUGGING ONLY
                 print("POS")
                 print(POS)
 
-                #DEFINE ONLY VB
                 print("===VERBS===")
                 print(POS[2][0])
                 if (POS[2][1]=='VBP' or POS[2][1]=='VB' or POS[2][1]=='VBD' or POS[2][1]=='VBZ' or POS[2][1]=='VBN' or POS[2][1]=='VBG'):
@@ -101,12 +95,11 @@ def parsing(request):
                     Artifacts.append(annotation)
             
             total_actor = len(list_actor)
-            # mengecek apakah total aktor lebih dari satu dan mengambil nilai koordinat dari setiap lane didalam array
 
 
             if (total_actor > 1): 
-                koordinatX = [] #koordinat sumbu x dari setiap swimlane
-                koordinatY = [] #koordinat sumbu y dari setiap swimlane
+                koordinatX = []
+                koordinatY = []
                 for act in tree.findall('.//Lanes'):
                     for sub_child in act.findall('.//Coordinates'):
                         Y_Coordinates = sub_child.get('YCoordinate')
@@ -114,12 +107,12 @@ def parsing(request):
                         koordinatY.append(Y_Coordinates)
                         koordinatX.append(X_Coordinates)
 
-                if (koordinatX[0]==koordinatX[1]): #CHECKING KOORDINAT Y 
-                    Y_ordinate=[] #Y_Ordinate merupakan variable koordinate y dari setiap aktivitas/activity
+                if (koordinatX[0]==koordinatX[1]):
+                    Y_ordinate=[] 
                     for check in tree.findall('.//Activity/Implementation/Task/.....'):
                         for sub_ordinate in check.findall('.//Coordinates'):
                             ordinate_y = sub_ordinate.get('YCoordinate')
-                            Y_ordinate.append(ordinate_y)   #SUMBU Y DARI SETIAP ACTIVITY
+                            Y_ordinate.append(ordinate_y)   
                     
                     Array = []
                     ACT = []
@@ -135,7 +128,7 @@ def parsing(request):
                     if (len(list_actor)>2):
                         for j in range (1,(len(koordinatY)-1)):
                             for i in range (0,len(Y_ordinate)):
-                                if (Y_ordinate[i] < koordinatY[len(koordinatY)-(len(koordinatY)-1)]): #Mendefinisikan Aktor Pertama dan Koordinat Y
+                                if (Y_ordinate[i] < koordinatY[len(koordinatY)-(len(koordinatY)-1)]):
                                     ACT[0].append(Y_ordinate[i])
                                     ACT[0] = list(set(ACT[0]))
                                 elif (Y_ordinate[i] > koordinatY[len(koordinatY)-1]):
@@ -147,7 +140,7 @@ def parsing(request):
                     else:
                         for i in range (0,len(Y_ordinate)):
                             for j in range (0,len(Y_ordinate)):
-                                if (Y_ordinate[i] < koordinatY[len(koordinatY)-(len(koordinatY)-1)]): #Mendefinisikan Aktor Pertama dan Koordinat Y
+                                if (Y_ordinate[i] < koordinatY[len(koordinatY)-(len(koordinatY)-1)]):
                                     ACT[0].append(Y_ordinate[i])
                                     ACT[0] = list(set(ACT[0]))
                                 elif (Y_ordinate[i] > koordinatY[len(koordinatY)-1]):
@@ -157,8 +150,6 @@ def parsing(request):
                     print(Array)
                     print(ACT)
 
-                    # print(Array)
-                    # print(ACT)
 
                     deleted_index = []
                     for i in range (0,len(ACT)):
@@ -171,32 +162,22 @@ def parsing(request):
                         for i in range (0,(len(ACT[j]))):
                             checking = ACT[j][i]
                             for elem in tree.findall('.//Activity/NodeGraphicsInfos/NodeGraphicsInfo/Coordinates[@YCoordinate="%s"]......' %checking):
-                                id = elem.get('Id') #coba
+                                id = elem.get('Id')
                                 activity_multiple = elem.get('Name')
-                                # if (activity_multiple != "Start" and activity_multiple != "End" and "?" not in activity_multiple and activity_multiple):
-                                    # arr_Name.append(activity_multiple)
-                                    # arr_Name.append(activity_multiple) #coba
-                                    # ACT[j].append(activity_multiple)
-                                # if (activity != "Start" and activity != "End" and "?" not in activity and activity):
                                 subject = "i"
                                 space = " "
                                 adverb = "can"
                                 space2 = " "
                                 raw_percobaan = subject + space + adverb + space2 + activity_multiple
-                                #case_folding
                                 raw_percobaan = raw_percobaan.casefold()
-                                #Tokenization
                                 text = nltk.word_tokenize(raw_percobaan)
                                 print(text[1])
 
-                                #PART OF SPEECH TAGGING
                                 POS = nltk.pos_tag(text)
-                                # DEBUGGING ONLY
                                 print("POS")
                                 print(POS)
 
-                                
-                                #DEFINE ONLY VB
+
                                 print("===VERBS===")
                                 print(POS[2][0])
                                 if (POS[2][1]=='VBP' or POS[2][1]=='VB' or POS[2][1]=='VBD' or POS[2][1]=='VBZ' or POS[2][1]=='VBN' or POS[2][1]=='VBG'):
@@ -205,16 +186,9 @@ def parsing(request):
                                             ACT[j].append(id)
                                             break
                         
-                        # print ("===INI COBA DEBUGGING===")
-                        # ACT[j] = set(ACT[j])
-                        # ACT[j] = list(ACT[j])
-                        # print(ACT[j])
-                        # print("===STOP===")
 
-                    # ACT[0] = list(set(ACT[0]))
-                    #ASPECT OF WHY PROCESSING
                     if (len(Artifacts)>0):
-                        Arr_Pair = []  #Pasangan Activity dengan Association
+                        Arr_Pair = []  
                         why = []
                         for i in range (0,len(Artifacts)):
                             why.append("X")
@@ -222,14 +196,14 @@ def parsing(request):
                             why[i] = []
                             Arr_Pair.append(why[i])
 
-                        source_array = []                           #inserted source to array
+                        source_array = []                         
                         for j in tree.findall('.//Association'):
                             Source = j.get('Source')
                             for elem in tree.findall('.//Activity[@Id="%s"]' %Source):
                                 id_act = elem.get('Id')
                                 source_array.append(id_act)
                         
-                        target_array = []                           #inserted source to array
+                        target_array = []                          
                         for j in tree.findall('.//Association'):
                             Target = j.get('Target')
                             for elem in tree.findall('.//Artifact[@Id="%s"]' %Target):
@@ -242,7 +216,7 @@ def parsing(request):
                         print(why)          
                         
 
-                        for i in range (0,len(ACT)):                #MENDELETE HANYA KOORDINAT Y SAJA
+                        for i in range (0,len(ACT)):               
                             for j in range (0,deleted_index[i]):
                                 ACT[i].pop(0)
                         
@@ -262,7 +236,7 @@ def parsing(request):
                                     if (ACT[i][j][0]==why[z][0]):
                                         ACT[i][j].append(why[z][1])
                     else:
-                        for i in range (0,len(ACT)):                #MENDELETE HANYA KOORDINAT Y SAJA
+                        for i in range (0,len(ACT)):               
                             for j in range (0,deleted_index[i]):
                                 ACT[i].pop(0)
                                 
@@ -277,14 +251,14 @@ def parsing(request):
                                     ACT[i][j].append(activities)
                                     
                     for i in range (0,len(ACT)):
-                        for j in range (0,len(ACT[i])):                  #MENDELETE HANYA KOORDINAT Y SAJA
+                        for j in range (0,len(ACT[i])):                 
                             for z in range (0,1):
                                 ACT[i][j].pop(0)
 
                     print(ACT)
-                    print("") #coba
-                    print("") #coba
-                    print("==HASIL ID BERDASARKAN KOORDINAT==") #coba
+                    print("") 
+                    print("")
+                    print("==HASIL ID BERDASARKAN KOORDINAT==") 
                     for i in range (0,len(ACT)):
                         for j in range (0,len(ACT[i])): 
                             if (len(ACT[i][j])==3):
@@ -296,19 +270,15 @@ def parsing(request):
                     
                 print("FILE NAME")
                 print(file_name)
-                # namaProject = request.POST.get("nama_project")
                 
                 newBPMN = BPMN(
                     nama_bpmn=file_name,
                 )
 
                 newBPMN.save()
-
-                # Get id_bpmn
                 bpmn_target_data = BPMN.objects.latest('id_bpmn')
                 bpmn_target = bpmn_target_data.id_bpmn
 
-                # Get nama_bpmn
                 usNameSize = len(file_name)
                 usName = file_name[:usNameSize - 5]
                 print(usName + '_us')
@@ -320,7 +290,6 @@ def parsing(request):
 
                 newUS.save()
 
-                # Get id_us
                 us_target_data = UserStories.objects.latest('id_us')
                 us_target = us_target_data.id_us
 
@@ -353,19 +322,16 @@ def parsing(request):
                 print("less than 2")
                 print("FILE NAME")
                 print(file_name)
-                # namaProject = request.POST.get("nama_project")
-                
+
                 newBPMN = BPMN(
                     nama_bpmn=file_name,
                 )
 
                 newBPMN.save()
 
-                # Get id_bpmn
                 bpmn_target_data = BPMN.objects.latest('id_bpmn')
                 bpmn_target = bpmn_target_data.id_bpmn
 
-                # Get nama_bpmn
                 usNameSize = len(file_name)
                 usName = file_name[:usNameSize - 5]
                 print(usName + '_us')
@@ -376,7 +342,6 @@ def parsing(request):
                 )
 
                 newUS.save()
-                # Get id_us
                 us_target_data = UserStories.objects.latest('id_us')
                 us_target = us_target_data.id_us
                 
@@ -399,13 +364,3 @@ def documentation(request):
 def history(request):
     bpmn_target_data = UserStories.objects.all
     return render(request,"history.html",{'data':bpmn_target_data})
-
-
-# def generate_pdf(request):
-#     html_string = render_to_string('pdf.html')
-#     html = HTML(string=html_string)
-#     result = html.write_pdf()
-
-# class PDFUserDetailView(PDFTemplateResponseMixin, DetailView):
-#     model = get_user_model()
-#     template_name = 'user_detail.html'
