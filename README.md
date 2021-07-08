@@ -72,21 +72,19 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
     ```sh
     pip install -r requirements.txt
     ```
-11. Setelah itu nyalakan Aplikasi XAMPP Control Panel dan sambungkan pada Apache dan MySQL.
-12. Kembali ke cmd
-13. Buat migrations
+11. Buat migrations
     ```sh
     python manage.py makemigrations
     ```
-14. Lakukan migrate
+12. Lakukan migrate
     ```sh
     python manage.py migrate
     ```
-15. Jalankan aplikasi pada *localhost*
+13. Jalankan aplikasi pada *localhost*
     ```sh
     python manage.py runserver
     ```
-16. Menuju browser dengan alamat http://127.0.0.1:8000/
+14. Menuju browser dengan alamat http://127.0.0.1:8000/
 
 
 ## Petunjuk Penggunaan
