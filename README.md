@@ -91,11 +91,20 @@ Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan 
 
 ## Petunjuk Penggunaan
 Cara Kerja Translasi BPMN to User Stories
-1. Masuk halaman home, kemudian klik “Start BPMN2US”
-2. Setelah itu tekan “Choose File” dan kemudian pilih file BPMN yang ingin anda Translasikan ke User Stories (filetype harus .XML / .XPDL)
-3. Jika sudah selesai upload file yang telah diinginkan, kemudian tekan “Submit”
+1. Masuk ke halaman utama, kemudian klik “See More”
+   ![1  See More](https://user-images.githubusercontent.com/79796286/124861432-c7ee9400-dfdd-11eb-8cd1-27b0039b9f78.png)
+
+2. Klik tombol “Choose File” untuk memilih file BPMN yang akan di translasikan ke User Stories (filetype harus .XML / .XPDL)
+   ![3  Halaman Generate](https://user-images.githubusercontent.com/79796286/124861588-10a64d00-dfde-11eb-9247-0d257eb4c946.png)
+
+3. Jika sudah selesai upload file yang telah diinginkan, kemudian klik “Submit” 
+   ![3  File Choosen](https://user-images.githubusercontent.com/79796286/124861627-274ca400-dfde-11eb-8ec7-5cd1a4ab70b5.png)
+
 4. Setelah klik Submit, maka file BPMN anda sudah terlihat berubah menjadi User Stories
-5. Untuk mengetahui lebih detail, tekan tombol "Show detail of components"
+   ![4  Result](https://user-images.githubusercontent.com/79796286/124861671-37fd1a00-dfde-11eb-919d-f4063037b659.png)
+
+5. Untuk mengetahui hasil user story secara detail, klik tombol "Show detail of components". Pada bagian ini, pengguna dapat mengetahui aspect of WHAT dan aspect of WHO pada user story yang dihasilkan. 
+   ![5  Show detail](https://user-images.githubusercontent.com/79796286/124861766-62e76e00-dfde-11eb-874e-04d265114d76.png)
 
 
 ## Informasi Lainnya
