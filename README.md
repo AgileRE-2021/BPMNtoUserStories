@@ -16,7 +16,7 @@
 ### Definisi
 Aplikasi BPMN to User Stories (BPMNtoUS) merupakan sebuah aplikasi berbasis web dimana aplikasi ini dapat melakukan translasi dari BPMN menjadi User Stories. 
 <br>
-User dapat mengupload file BPMN (tanpa login) dengan tipe file BPMN yaitu (.XML atau .XPDL), kemudian user dapat melakukan generate dari file BPMN tadi menjadi User Stories dengan menekan tombol generate. (Project Aplikasi BPMNtoUS ini dikerjakan oleh kelompok 3 kelas I2).
+User dapat mengupload file BPMN (tanpa login) dengan tipe file BPMN yaitu (.XPDL), kemudian user dapat melakukan generate dari file BPMN tadi menjadi User Stories dengan menekan tombol generate. (Project Aplikasi BPMNtoUS ini dikerjakan oleh kelompok 3 kelas I2).
 <br/>
 >- **BPMN** merupakan standar notasi grafis yang mendeskripsikan langkah logis dari proses bisnis.
 >- **User story** merupakan deskripsi mengenai kebutuhan sistem dalam bentuk bahasa natural yang dapat dengan mudah dipahami oleh end user yang tidak memiliki background TI.
@@ -38,11 +38,11 @@ Aplikasi CDG dibangun dengan memanfaatkan *software*, *framework*, dan beberapa 
 
 ## Petunjuk Instalasi 
 Petunjuk mengenai prosedur instalasi untuk aplikasi BPMNtoUserStories dilakukan pada sesi terminal, berikut prosedur yang dapat dilakukan :
-1. Install Python 3.9.2 (Pastikan untuk mencentang add to PATH)
+1. Install Python 3.9.2 (Pastikan untuk mencentang add to PATH) dan Install juga XAMP Control Panel
 2. Buka Command Prompt
-3. Lakukan pembuatan directori
+3. Lakukan pembuatan directori (untuk membuat direktori baru [tidak harus pada disk C:])
    ```sh
-   mkdir AgileRE-2021 (untuk membuat direktori baru [tidak harus pada disk C:])
+   mkdir AgileRE-2021
    ```
 4. Masuk ke directori AgileRE-2021
    ```sh
@@ -94,7 +94,7 @@ Cara Kerja Translasi BPMN to User Stories
 1. Masuk ke halaman utama, kemudian klik “See More”
    ![1  See More](https://user-images.githubusercontent.com/79796286/124861432-c7ee9400-dfdd-11eb-8cd1-27b0039b9f78.png)
 
-2. Klik tombol “Choose File” untuk memilih file BPMN yang akan di translasikan ke User Stories (filetype harus .XML / .XPDL)
+2. Klik tombol “Choose File” untuk memilih file BPMN yang akan di translasikan ke User Stories (filetype harus .XPDL)
    ![3  Halaman Generate](https://user-images.githubusercontent.com/79796286/124861588-10a64d00-dfde-11eb-9247-0d257eb4c946.png)
 
 3. Jika sudah selesai upload file yang telah diinginkan, kemudian klik “Submit” 
