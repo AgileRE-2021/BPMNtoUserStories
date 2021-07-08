@@ -54,11 +54,27 @@
             <hr class='hrItem' />
         </div>
         <div class='content'>
-          <center> <h4> The Result of User Stories Generation : </h4> </center>
-          {% for d in data %}  
-           <center> <p> I as {{ d.text_who }}, I can {{ d.text_what }} </p> </center>
-          {% endfor %}  
-        </div>
+            <center> <h4> The Result of User Stories Generation : </h4> </center>
+            {% for d in data %} 
+                  {% if d.text_why == None %}  
+                      {% with d.text_who|make_list|first as checking %} 
+                          {% if checking  == "A" or checking  == "I" or d.text_who != "User" and checking  == "U" or checking  == "E" or checking  == "O"%}
+                          <center> <p> I as an {{ d.text_who }}, I can {{ d.text_what }} </p> </center>
+                          {% else %}
+                          <center> <p> I as a {{ d.text_who }}, I can {{ d.text_what }} </p> </center>
+                          {% endif %}
+                      {% endwith %}
+                  {% else %}
+                      {% with d.text_who|make_list|first as checking %} 
+                          {% if checking  == "A" or checking  == "I" or d.text_who != "User" and checking  == "U" or checking  == "E" or checking  == "O"%}
+                          <center> <p> I as an {{ d.text_who }}, I can {{ d.text_what }}, So That {{ d.text_why }} </p> </center>
+                          {% else %}
+                          <center> <p> I as a {{ d.text_who }}, I can {{ d.text_what }}, So That {{ d.text_why }} </p> </center>
+                          {% endif %}
+                      {% endwith %}
+                  {% endif %}
+            {% endfor %}  
+          </div>
     </div>
     </body>
 </html>
